@@ -1,8 +1,7 @@
 name: Publish Packages
 
 on:
-  push:
-    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -13,11 +12,11 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.101
+        dotnet-version: 5.0.x
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore src/PhlatQL.Core/PhlatQL.Core.csproj
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build src/PhlatQL.Core/PhlatQL.Core.csproj --configuration Release --no-restore
     - name: Publish PhlatQL.Core
       uses: brandedoutcast/publish-nuget@v2.5.2
       with:
