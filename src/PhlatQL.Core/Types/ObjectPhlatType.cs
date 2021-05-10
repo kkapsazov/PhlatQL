@@ -6,7 +6,7 @@ using PhlatQL.Core.Resolvers;
 
 namespace PhlatQL.Core.Types
 {
-    public class ObjectPhlatType<TSourceType> : IResolveFieldContextT<TSourceType>
+    public class ObjectPhlatType<TSourceType> : IResolveFieldContextT<TSourceType>, IPhlatType
     {
         private readonly Dictionary<string, IFieldResolver> fields = new();
 

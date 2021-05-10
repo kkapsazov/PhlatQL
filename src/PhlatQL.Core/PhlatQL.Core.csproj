@@ -9,4 +9,8 @@
         <Authors>kkapsazov</Authors>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="5.0.5" />
+    </ItemGroup>
+
 </Project>

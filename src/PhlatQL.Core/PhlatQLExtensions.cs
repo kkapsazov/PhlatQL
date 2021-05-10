@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace PhlatQL.Core
 {
@@ -19,6 +22,11 @@ namespace PhlatQL.Core
             }
 
             return char.ToLower(str[0]) + str.Substring(1);
+        }
+        
+        public static List<string> ToFields<T>(this JsonPatchDocument<T> patch) where T : class
+        {
+            return patch.Operations.Select(x => x.path.Replace("/", "").ToLowerFirst()).ToList();
         }
     }
 }
