@@ -26,6 +26,9 @@ public class Book
     public virtual Author Author { get; set; }
 }
 ```
+
+Get
+---
 ```C#
 //PhlatQL types
 public class AuthorType : ObjectPhlatType<Author>
@@ -54,6 +57,9 @@ public IActionResult All()
     return this.Ok(new BookType().Build(books));
 }
 ```
+
+Create
+-----
 ```C#
 //PhlatQL create type
 public class BookCreateInput<T> : CreatePhlatType<T> where T : Book
@@ -92,6 +98,9 @@ public IActionResult Create([FromBody] BookCreateInput<Book> patch)
     return this.Ok(new BookType().Build(entity));
 }
 ```
+
+Update
+------
 ```C#
 //PhlatQL update type
 public class BookUpdateInput<T> : UpdatePhlatType<T> where T : Book
